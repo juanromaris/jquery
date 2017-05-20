@@ -2,30 +2,12 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>IMDB</title>
+  <title>Intro al DOM</title>
   <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
 
-  <h1 class="main-title">IMDB</h1>
-
-  <p>parrafo1</p>
-  <p>parrafo2</p>
-
-
-   <div class="container">llamada a una clase
-
-
-        <ul>
-              <li>fd</li>
-              <li>sdf</li>
-              <li>sdfsdf</li>
-        </ul>
-
-
-   </div>
-
-
+  <h1 class="main-title">Mis Noticias</h1>
 
   <hr>
 
@@ -33,17 +15,14 @@
     <label > Titulo </label><br/>
     <input type="text" placeholder="Titulo" id="titulo" name="">
     <br><br>
-    <label>Descripción</label><br>
+    <label> Cuerpo de noticia </label><br>
     <textarea type="text" placeholder="Lo que quieras" id="descripcion" name=""></textarea>
     <br>
-    <label>Imagen</label><br>
-    <input name="uploadedfile" id="img" type="file" />
+    <input type="button" id="boton-agregar" value="Agregar noticia" onclick="misNoticias.agregar();">
     <br>
-    <input type="button" id="boton-agregar" value="Agregar pelicula" onclick="imdb.agregar();">
-    <br>
-    <input type="button" id="boton-mostrar" value="mostrar peliculas" onclick="imdb.mostrar();">
+    <input type="button" id="boton-mostrar" value="mostrar noticia" onclick="misNoticias.mostrar();">
 
-  <div id="peliculas">
+  <div id="noticias">
 
 
 
@@ -54,7 +33,7 @@
   <hr>
 
   <!-- Cargamos Nuestro JavaScript -->
-  <script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
-  <script type="text/javascript" src="js/app.js"></script>
+  <script src="js/jquery-3.2.1.min.js"></script>
+  <script src="js/app.js"></script>
 </body>
 </html>

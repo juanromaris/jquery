@@ -7,28 +7,16 @@ $(document).ready(function() {
 
 
 
-var hola = $("p");
-
-console.log(hola);
-
-
-var clase = $(".container");
-
-
-console.log(clase);
-
-
-var s3 = $("ul li").eq(2).html();
-console.log(s3);
 
 
 
-var imdb = (function() {
+
+var misNoticias = (function() {
 
   // entorno privado
 
   // Creamos un array para guardar las noticias
-  var peliculas = [];
+  var noticias = [];
 
 
 
@@ -43,29 +31,26 @@ var imdb = (function() {
 
 
 
-  function agregarPelicula() {
+  function agregarNoticia() {
 
 
     // Constructor Noticia
-    function Pelicula() {
+    function Noticia() {
       this.titulo = "";
-      this.descripcion = "";
-      this.img = "";
+      this.cuerpo = "";
     }
 
     // Creamos un objeto Noticia asignado a una variable
-    var pelicula = new Pelicula();
+    var noticia = new Noticia();
 
     // Agregamos titulo y cuerpo
-    pelicula.titulo = document.getElementById("titulo").value;
-    console.log(pelicula.titulo);
-    pelicula.descripcion = document.getElementById("descripcion").value;
-    console.log(pelicula.descripcion);
-    pelicula.img = document.getElementById("img").value;
-    console.log(pelicula.img);
+    noticia.titulo = $("#titulo").val();
+    console.log(noticia.titulo);
+    noticia.cuerpo = $("#descripcion").val();
+    console.log(noticia.cuerpo);
     // Si el usuario cargo algo hago esto, caso contrario..
-    if (pelicula.titulo && pelicula.descripcion !== null) {
-      peliculas.push(pelicula);
+    if (noticia.titulo && noticia.cuerpo !== null) {
+      noticias.push(noticia);
       return true;
     } else {
       return false;
@@ -74,14 +59,14 @@ var imdb = (function() {
   }
 
 
-  function mostrarPeliculas() {
+  function mostrarNoticia() {
 
     // Agarramos el container de noticias (fijate que metodo usamos)
-    if (peliculas.length > 0) {
+    if (noticias.length > 0) {
 
 
       // capturo el elemento con ID "noticias" (fijate en el HTML)
-      var containerPeliculas = document.getElementById("peliculas");
+      var containerNoticias = $("#noticias");
 
 
       // Creamos un par de variables para el titulo y parrafo
@@ -90,24 +75,25 @@ var imdb = (function() {
 
 
       // Iteramos sobre el array de noticias
-      for (var i = 0; i < peliculas.length; i++) {
+      for (var i = 0; i < noticias.length; i++) {
 
         // Creamos los elementos y los asignamos
         tituloConFormato = document.createElement("h2");
         parrafoConFormato = document.createElement("p");
 
         // Agrego el contenido del titulo y noticias
-        tituloConFormato.innerHTML = peliculas[i].titulo;
-        parrafoConFormato.innerHTML = peliculas[i].descripcion;
-        parrafoConFormato.innerHTML = peliculas[i].img;
+        tituloConFormato.append(noticias[i].titulo);
+        console.log(tituloConFormato);
+        parrafoConFormato.append(noticias[i].cuerpo);
+console.log(parrafoConFormato);
 
         // Los agrego al DOM
-        containerPeliculas.appendChild(tituloConFormato);
-        containerPeliculas.appendChild(parrafoConFormato);
+        containerNoticias.append(tituloConFormato);
+        containerNoticias.append(parrafoConFormato);
       }
 
       // Vaciamos el array al finalizar (proba que pasa si sacas esto)
-      peliculas = [];
+      noticias = [];
 
       // Como la carga de noticias salio bien, devolvemos "true"
       return true;
@@ -124,7 +110,7 @@ var imdb = (function() {
   return {
     agregar: function() {
       // hacer algo
-      if (agregarPelicula()) {
+      if (agregarNoticia()) {
         return "Carga de noticias exitosa.";
       } else {
         return "No se ha cargado nada.";
@@ -132,7 +118,7 @@ var imdb = (function() {
 
     },
     mostrar: function() {
-      if (mostrarPeliculas()) {
+      if (mostrarNoticia()) {
         return "Cargando noticias al DOM..";
       } else {
         return "No se ha agregado ninguna noticia, cargue una antes.";
@@ -145,9 +131,12 @@ var imdb = (function() {
 
 console.log("Carga de JS realizada con exito!");
 
-var botonAgregar = document.getElementById("boton-agregar");
-     botonAgregar.onclick = agregarPelicula ();
+
+    var botonAgregar = $("#boton-agregar");
+     botonAgregar.click = agregarNoticia ();
 
 
-var botonMostrar = document.getElementById("boton-mostrar");
-     botonMostrar.onclick = mostrarPeliculas ();
+    var botonMostrar = $("#boton-mostrar");
+     botonMostrar.click = agregarNoticia ();
+
+     
